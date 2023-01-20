@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :user_notification_timings, dependent: :destroy
   has_many :notification_timings, through: :user_notification_timings
   has_one_attached :avatar
+  
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
